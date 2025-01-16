@@ -1,6 +1,5 @@
 import CustomSVG from "../../ui/media/CustomSVG.tsx";
 import Title from "../../ui/typography/Title.tsx";
-import React from "react";
 import {Article, ArticleCondensed} from "../../../models/Article.ts";
 import {formatLongDate} from "../../../helpers/Date.ts";
 import {Link} from "react-router-dom";
@@ -50,8 +49,9 @@ export default function ArticleCard({article}: ArticleCardProps) {
 
                             {/* Category */}
                             <div className="flex flex-row items-center space-x-3">
-                                <div className="bg-custom-blue-violet bg-opacity-20 px-4 py-1 rounded-2xl font-roboto font-bold text-md leading-normal text-custom-blue-violet">
-                                    {article.category ? article.category.name : 'General'}
+                                <div
+                                    className="bg-custom-blue-violet bg-opacity-20 px-4 py-1 rounded-2xl font-roboto font-bold text-sm leading-normal text-custom-blue-violet">
+                                    {article && 'category' in article ? article.category?.name : 'General'}
                                 </div>
                             </div>
                         </div>

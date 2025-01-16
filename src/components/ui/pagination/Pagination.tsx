@@ -1,4 +1,3 @@
-import React from 'react';
 import {usePagination} from "../../../hooks/usePagination.ts";
 import CustomSVG from "../media/CustomSVG.tsx";
 

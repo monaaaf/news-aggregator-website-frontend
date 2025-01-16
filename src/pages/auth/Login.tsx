@@ -1,15 +1,10 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import {Formik, Field, Form, ErrorMessage} from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import {useState} from "react";
 import Title from "../../components/ui/typography/Title.tsx";
 import {useAuth} from "../../contexts/Auth.tsx";
 import {getUserByToken, login} from "../../requests/Auth.ts";
 import CustomAlert from "../../components/ui/alert/CustomAlert.tsx";
-
-interface LoginFormValues {
-    email: string;
-    password: string;
-}
 
 const validationSchema = Yup.object({
     email: Yup.string()
@@ -21,7 +16,6 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-
     const {saveAuth, setCurrentUser} = useAuth();
     const [hasErrors, setHasErrors] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
@@ -74,12 +68,14 @@ const Login = () => {
                                     type="email"
                                     className="mt-1 p-2 w-full font-roboto border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                                <ErrorMessage name="email" component="div" className="text-red-500 text-sm pt-1 font-roboto" />
+                                <ErrorMessage name="email" component="div"
+                                              className="text-red-500 text-sm pt-1 font-roboto"/>
                             </div>
 
                             {/* Password */}
                             <div className="mb-6">
-                                <label htmlFor="password" className="block font-roboto text-sm font-medium text-gray-700">
+                                <label htmlFor="password"
+                                       className="block font-roboto text-sm font-medium text-gray-700">
                                     Password
                                 </label>
                                 <Field
@@ -87,7 +83,8 @@ const Login = () => {
                                     type="password"
                                     className="mt-1 p-2 w-full font-roboto border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                                <ErrorMessage name="password" component="div" className="text-red-500 text-sm pt-1 font-roboto" />
+                                <ErrorMessage name="password" component="div"
+                                              className="text-red-500 text-sm pt-1 font-roboto"/>
                             </div>
 
                             {/* Submit Button */}

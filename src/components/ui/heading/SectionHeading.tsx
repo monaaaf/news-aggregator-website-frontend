@@ -1,6 +1,5 @@
 import Title from "../typography/Title.tsx";
 import CustomSVG from "../media/CustomSVG.tsx";
-import React from "react";
 import {Link} from "react-router-dom";
 
 interface SectionHeadingProps {

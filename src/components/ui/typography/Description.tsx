@@ -1,5 +1,3 @@
-import Doodle from "@/web/Components/Shapes/Doodle";
-
 interface DescriptionProps {
     text: string;
     classes?: string;

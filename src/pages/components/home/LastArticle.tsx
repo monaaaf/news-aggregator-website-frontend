@@ -2,7 +2,7 @@ import React from 'react'
 import {Article} from "../../../models/Article.ts";
 import CustomSVG from "../../../components/ui/media/CustomSVG.tsx";
 import Title from "../../../components/ui/typography/Title.tsx";
-import {formatLongDate, formatYearMonthDate} from "../../../helpers/Date.ts";
+import {formatLongDate} from "../../../helpers/Date.ts";
 import {Link} from "react-router-dom";
 
 interface LastArticleProps {
@@ -50,7 +50,8 @@ const LastArticle: React.FC<LastArticleProps> = ({article}) => {
 
                 {/* Category */}
                 <div className="flex flex-row items-center space-x-3">
-                    <div className="bg-custom-blue-violet bg-opacity-20 px-4 py-1 rounded-2xl font-roboto font-bold text-lg leading-normal text-custom-blue-violet">
+                    <div className="flex flex-row items-center justify-center bg-custom-blue-violet bg-opacity-20 px-4 py-1 rounded-2xl font-roboto font-bold text-md leading-normal text-custom-blue-violet">
+                        {/*<CustomSVG path="/assets/icons/globe.svg" svgClassName="w-14 h-14"/>*/}
                         {article.category ? article.category.name : 'General'}
                     </div>
                 </div>

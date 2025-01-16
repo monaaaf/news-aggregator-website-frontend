@@ -10,7 +10,7 @@ import {formatLongDate} from "../helpers/Date.ts";
 const SingleArticle: React.FC = () => {
     const {id} = useParams()
     const navigate = useNavigate()
-    const [article, setArticle] = useState<Article>([]);
+    const [article, setArticle] = useState<Article|null>(null);
 
     useEffect(() => {
         if (id) {

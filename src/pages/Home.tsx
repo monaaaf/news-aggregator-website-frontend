@@ -7,17 +7,14 @@ import {getArticles} from "../requests/Article.ts";
 import {getErrorPage} from "../helpers/Requests.ts";
 import {useNavigate} from "react-router-dom";
 import LastArticle from "./components/home/LastArticle.tsx";
-import {useMaster} from "../contexts/MasterLayout.tsx";
 import {Author, Category} from "../models/Misc.ts";
 import {getTopAuthors} from "../requests/Author.ts";
 import {getTopCategories} from "../requests/Category.ts";
 
 const Home: React.FC = () => {
     const navigate = useNavigate()
-    const {options} = useMaster()
-    const {authors} = options
 
-    const [lastArticle, setLastArticle] = useState<Article>(null);
+    const [lastArticle, setLastArticle] = useState<Article | null>(null);
     const [articles, setArticles] = useState<Article[]>([]);
     const [topAuthors, setTopAuthors] = useState<Author[]>([]);
     const [topCategories, setTopCategories] = useState<Category[]>([]);
@@ -99,7 +96,7 @@ const Home: React.FC = () => {
 
             {/*  Our Creators  */}
             <div className="mb-14">
-                <SectionHeading title="Our Creators" hideAllCta={true}/>
+                <SectionHeading title="Our Creators"/>
 
                 <div className="flex flex-row items-center">
                     <div className="grid grid-cols-2 md:grid-cols-6 gap-6">
@@ -123,7 +120,7 @@ const Home: React.FC = () => {
                         {
                             topCategories.length > 0 && (
                                 <div className="w-full md:w-1/2 pr-2 md:pr-4 pb-4 md:pb-0 flex flex-col">
-                                    <SectionHeading title={topCategories[0].name} hideAllCta={true}/>
+                                    <SectionHeading title={topCategories[0].name}/>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {
@@ -141,7 +138,7 @@ const Home: React.FC = () => {
                         {
                             topCategories.length > 1 && (
                                 <div className="w-full md:w-1/2 pl-2 md:pl-4 flex flex-col justify-between">
-                                    <SectionHeading title={topCategories[1].name} hideAllCta={true}/>
+                                    <SectionHeading title={topCategories[1].name}/>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         {

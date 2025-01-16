@@ -1,4 +1,3 @@
-import React from "react";
 import CustomSVG from "../ui/media/CustomSVG.tsx";
 import {Link} from "react-router-dom";
 

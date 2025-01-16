@@ -4,6 +4,7 @@ import { useState } from "react";
 import Title from "../../components/ui/typography/Title.tsx";
 import {useAuth} from "../../contexts/Auth.tsx";
 import {getUserByToken, register} from "../../requests/Auth.ts";
+import CustomAlert from "../../components/ui/alert/CustomAlert.tsx";
 
 interface RegisterFormValues {
     name: string;
@@ -23,20 +24,16 @@ const validationSchema = Yup.object({
         .min(6, "Password must be at least 6 characters")
         .required("Password is required"),
     password_confirmation: Yup.string()
-        .oneOf([Yup.ref("password"), null], "Passwords must match")
+        .oneOf([Yup.ref("password")], "Passwords must match")
         .required("Password confirmation is required"),
 });
 
 const Register = () => {
-    const [formStatus, setFormStatus] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false)
     const {saveAuth, setCurrentUser} = useAuth();
     const [hasErrors, setHasErrors] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
     const handleSubmit = async (values: RegisterFormValues, {setSubmitting}: any) => {
-        setLoading(true)
-
         try {
             const {data: auth} = await register(values.name, values.email, values.password, values.password_confirmation)
 
@@ -49,7 +46,6 @@ const Register = () => {
             setHasErrors(true)
             setErrorMessage('These credentials do not match our records.')
             setSubmitting(false)
-            setLoading(false)
         }
     };
 
@@ -59,12 +55,7 @@ const Register = () => {
                 <Title text="Sign up" isHero={true}/>
             </div>
 
-            {/* Form Status */}
-            {formStatus && (
-                <div className="mt-4 mb-4 text-green-500 text-center">
-                    {formStatus}
-                </div>
-            )}
+            {hasErrors && <CustomAlert message={errorMessage} color="danger"/>}
 
             <Formik
                 initialValues={{

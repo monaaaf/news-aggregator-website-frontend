@@ -1,5 +1,5 @@
-import axios, {AxiosError, AxiosResponse} from 'axios'
-import {Article, ArticlePaginate} from "../models/Article.ts";
+import axios, {AxiosResponse} from 'axios'
+import {ArticlePaginate} from "../models/Article.ts";
 
 const API_URL = import.meta.env.VITE_APP_API_URL
 const ENDPOINT = `${API_URL}`

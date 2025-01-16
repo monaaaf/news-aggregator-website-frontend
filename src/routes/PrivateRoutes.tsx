@@ -1,7 +1,6 @@
 import {Navigate, Route, Routes} from 'react-router-dom'
 import Profile from "../pages/Profile.tsx";
 import {MasterProvider} from "../contexts/MasterLayout.tsx";
-import Articles from "../pages/Articles.tsx";
 
 const PrivateRoutes = () => {
     return (

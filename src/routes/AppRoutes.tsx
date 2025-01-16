@@ -1,4 +1,4 @@
-import React, {FC, lazy} from 'react';
+import {FC, lazy} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import App from "../App";
 import {useAuth} from "../contexts/Auth.tsx";

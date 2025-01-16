@@ -12,7 +12,7 @@ type CustomDropdownProps = {
     options: Option[];
     label: string;
     selectedOptions: number[];
-    setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>;
+    setSelectedOptions: React.Dispatch<React.SetStateAction<number[]>>;
     filtered?: boolean;
     setFiltered: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -22,7 +22,6 @@ export default function CustomDropdown({
                                            label,
                                            selectedOptions,
                                            setSelectedOptions,
-                                           filtered = false,
                                            setFiltered,
                                        }: CustomDropdownProps) {
     const [searchTerm, setSearchTerm] = useState<string>('');
