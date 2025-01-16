@@ -50,7 +50,8 @@ export default function ArticleCard({article}: ArticleCardProps) {
                             {/* Category */}
                             <div className="flex flex-row items-center space-x-3">
                                 <div
-                                    className="bg-custom-blue-violet bg-opacity-20 px-4 py-1 rounded-2xl font-roboto font-bold text-sm leading-normal text-custom-blue-violet">
+                                    className="flex flex-row items-center justify-center gap-1 bg-custom-blue-violet bg-opacity-20 px-4 !pl-[11px] py-1 rounded-2xl font-roboto font-normal text-sm leading-normal text-custom-blue-violet">
+                                    <CustomSVG path="/assets/icons/globe.svg" svgClassName="w-6 h-6"/>
                                     {article && 'category' in article ? article.category?.name : 'General'}
                                 </div>
                             </div>

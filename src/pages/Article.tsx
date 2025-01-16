@@ -86,7 +86,8 @@ const SingleArticle: React.FC = () => {
                                 </div>
                                 <span
                                     className="font-roboto font-semibold text-md leading-md text-black">&middot;</span>
-                                <div className="font-roboto font-semibold text-md leading-normal text-custom-blue-violet">
+                                <div className="flex flex-row items-center justify-center gap-1 font-roboto font-semibold text-md leading-normal text-custom-blue-violet">
+                                    <CustomSVG path="/assets/icons/globe.svg" svgClassName="w-6 h-6"/>
                                     {article.category ? article.category.name : 'General'}
                                 </div>
                                 <span
