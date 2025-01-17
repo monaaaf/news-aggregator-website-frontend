@@ -7,19 +7,19 @@ import {getArticles} from "../requests/Article.ts";
 import {Article} from "../models/Article.ts";
 import Pagination from "../components/ui/pagination/Pagination.tsx";
 import {defaultPaginationState, PaginationState} from "../models/General.ts";
-import {useMaster} from "../contexts/MasterLayout.tsx";
 import {chunkArray} from "../helpers/DataManipulations.ts";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {formatDate} from "../helpers/Date.ts";
+import {getOptions} from "../requests/Options.ts";
+import {Options} from "../models/Options.ts";
+import {DEFAULT_OPTIONS} from "../contexts/MasterLayout.tsx";
 
 const Articles: React.FC = () => {
     const navigate = useNavigate()
-    const {options} = useMaster()
-    const {categories, sources} = options
-
     const [meta, setMeta] = useState<PaginationState | undefined>(defaultPaginationState);
     const [articles, setArticles] = useState<Article[]>([]);
+    const [options, setOptions] = useState<Options>(DEFAULT_OPTIONS)
     const [searchKeyword, setSearchKeyword] = useState('');
     const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
     const [filteredCategories, setFilteredCategories] = useState<boolean>(false);
@@ -62,7 +62,6 @@ const Articles: React.FC = () => {
         }
 
         if (startDate && endDate) {
-            console.log(startDate)
             filterQuery += (filterQuery ? '&' : '') + `filter[publish_date_range]=${formatDate(startDate)},${formatDate(endDate)}`;
         }
 
@@ -84,6 +83,16 @@ const Articles: React.FC = () => {
             } else {
                 setArticles(response.data)
                 setMeta(response.meta)
+            }
+        });
+
+        getOptions().then((response) => {
+            const errorPage = getErrorPage(response)
+
+            if (errorPage) {
+                navigate(errorPage)
+            } else {
+                setOptions(response)
             }
         });
 
@@ -111,7 +120,7 @@ const Articles: React.FC = () => {
                     </div>
                     <div className="w-full md:w-1/4">
                         <CustomDropdown
-                            options={(categories as Option[])}
+                            options={(options.categories as Option[])}
                             label="Categories"
                             selectedOptions={selectedCategories}
                             setSelectedOptions={setSelectedCategories}
@@ -121,7 +130,7 @@ const Articles: React.FC = () => {
                     </div>
                     <div className="w-full md:w-1/4">
                         <CustomDropdown
-                            options={(sources as Option[])}
+                            options={(options.sources as Option[])}
                             label="Sources"
                             selectedOptions={selectedSources}
                             setSelectedOptions={setSelectedSources}

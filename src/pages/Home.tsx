@@ -94,9 +94,9 @@ const Home: React.FC = () => {
                 </div>
             </div>
 
-            {/*  Our Creators  */}
+            {/*  Top Creators  */}
             <div className="mb-14">
-                <SectionHeading title="Our Creators"/>
+                <SectionHeading title="Top Creators"/>
 
                 <div className="flex flex-row items-center">
                     <div className="grid grid-cols-2 md:grid-cols-6 gap-6">

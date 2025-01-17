@@ -5,7 +5,7 @@ import {getErrorPage} from "../helpers/Requests.ts";
 import {getOptions} from "../requests/Options.ts";
 import {Options} from "../models/Options.ts";
 
-const DEFAULT_OPTIONS: Options = {
+export const DEFAULT_OPTIONS: Options = {
     authors: [], categories: [], sources: []
 }
 
